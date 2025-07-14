@@ -10,8 +10,8 @@ body {
 
 .flipbook {
   perspective: 2000px;
-  width: 540px;
-  height: 960px;
+  width: 720px;
+  height: 1280px;
   position: relative;
 }
 
