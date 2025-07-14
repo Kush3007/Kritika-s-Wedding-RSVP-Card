@@ -1,4 +1,4 @@
-/*body {
+body {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,8 +10,8 @@
 
 .flipbook {
   perspective: 2000px;
-  width: 3840px;
-  height: 2160px;
+  width: 720px;
+  height: 1280px;
   position: relative;
 }
 
@@ -67,134 +67,4 @@ button {
 button:disabled {
   background: #ccc;
   cursor: not-allowed;
-}*/
-
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: #fef6e4;
-  font-family: 'Georgia', serif;
-  margin: 0;
-  overflow: hidden; /* Prevent body scroll if flipbook is too large, manage overflow within flipbook if needed */
-}
-
-.flipbook {
-  perspective: 2000px;
-  /* CHANGE 1: Use fluid units for width and height */
-  /* Use a max-width to ensure it doesn't get excessively large on very wide screens,
-     and use a fluid width (e.g., vw) to scale with the viewport. */
-  max-width: 90vw; /* Take up to 90% of viewport width */
-  max-height: 90vh; /* Take up to 90% of viewport height */
-  /* Using aspect-ratio to maintain the original proportions of your 3840x2160 images */
-  /* 3840 / 2160 = 1.777... or 16 / 9 */
-  aspect-ratio: 16 / 9;
-  position: relative;
-  /* Center the flipbook if it doesn't take up 100% of the space */
-  margin: auto;
-}
-
-.page {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: white;
-  border: 2px solid #ccc;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-  transform-origin: left;
-  transition: transform 0.5s;
-  backface-visibility: hidden;
-  /* Consider reducing padding on smaller screens if it causes issues,
-     but for now, it's relative to the page size so it should scale. */
-  padding: 20px;
-  box-sizing: border-box;
-  z-index: auto;
-  /* Ensure overflow is hidden for page content to prevent scrollbars if content exceeds */
-  overflow: hidden;
-}
-
-.page img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-}
-
-.page:nth-child(even) {
-  transform: rotateY(0deg);
-  z-index: 2; /* Adjust z-index based on your desired stacking */
-}
-
-.page.flipped {
-  transform: rotateY(-180deg);
-  z-index: 3; /* When flipped, bring it forward */
-}
-
-.controls {
-  margin-top: 20px;
-  text-align: center;
-  /* Adjust margins or positioning for small screens if buttons overlap */
-  position: absolute; /* Position controls relative to body or a wrapper */
-  bottom: 20px; /* Adjust as needed */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%; /* Ensure controls span full width for centering */
-  display: flex; /* Use flexbox to easily space buttons */
-  justify-content: center; /* Center buttons horizontally */
-  align-items: center;
-  gap: 20px; /* Space between buttons */
-  max-width: 90vw; /* Limit width of controls for consistency */
-}
-
-button {
-  font-size: 16px;
-  padding: 10px 20px;
-  /* Removed individual margins as gap in flexbox handles spacing */
-  background: #ffb703;
-  border: none;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s ease;
-  /* Responsive font size for buttons */
-  font-size: clamp(14px, 4vw, 18px); /* Minimum 14px, max 18px, scales with viewport width */
-}
-
-button:disabled {
-  background: #ccc;
-  cursor: not-allowed;
-}
-
-/* Optional: Media Query for very small screens or landscape mode if specific adjustments are needed */
-@media (max-width: 600px) {
-  .controls {
-    flex-direction: row; /* Keep buttons in a row for small screens, stack only if needed by design */
-    gap: 10px; /* Adjust gap for smaller screens */
-    bottom: 10px; /* Adjust position */
-    padding: 0 10px; /* Add some padding to the sides */
-    box-sizing: border-box;
-  }
-  button {
-    flex-grow: 1; /* Allow buttons to grow and fill space */
-    max-width: 48%; /* Adjust maximum width to allow two buttons */
-    padding: 8px 15px; /* Slightly smaller padding */
-    font-size: clamp(12px, 3.5vw, 16px); /* Adjust font size range for smaller screens */
-  }
-}
-
-/* For landscape mode on phones, you might want to adjust how the flipbook takes up space */
-@media screen and (orientation: landscape) and (max-height: 500px) {
-  .flipbook {
-    max-width: 95vw;
-    max-height: 95vh;
-  }
-  .controls {
-    bottom: 5px; /* Move controls up a bit */
-    gap: 15px; /* Adjust gap for landscape */
-  }
-  button {
-    padding: 5px 10px; /* Smaller padding for buttons in landscape to save vertical space */
-    font-size: clamp(10px, 3vw, 14px); /* Smaller font size in landscape */
-  }
 }
