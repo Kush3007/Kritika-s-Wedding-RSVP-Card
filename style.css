@@ -12,7 +12,7 @@ body {
   perspective: 2000px;
   width: 960px;
   height: 1280px;
-  position: static;
+  position: absolute;
 }
 
 .page {
