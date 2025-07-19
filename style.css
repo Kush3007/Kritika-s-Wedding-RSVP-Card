@@ -1,21 +1,17 @@
 body {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
   background: #fef6e4;
   font-family: 'Georgia', serif;
   margin: 0;
-  padding: 10px;
-  box-sizing: border-box;
 }
 
 .flipbook {
   perspective: 2000px;
-  width: 90vw;
-  height: 720px;
-  aspect-ratio: 9/16;
+  width: 720px;
+  height: 1280px;
   position: relative;
 }
 
@@ -29,9 +25,9 @@ body {
   transform-origin: left;
   transition: transform 0.5s;
   backface-visibility: hidden;
-  padding: 10px;
+  padding: 20px;
   box-sizing: border-box;
-/*   z-index: auto; */
+  z-index: auto;
 }
 
 .page img {
@@ -73,23 +69,15 @@ button:disabled {
   cursor: not-allowed;
 }
 
-/* @media (max-width: 600px) {
-   Adjust styles for mobile 
-  .flipbook {
-    width: 100vw;
+@media (max-width: 600px) {
+  /* Adjust styles for mobile */
+  .your-container {
+    width: 100%;
     padding: 10px;
     font-size: 1em;
-    aspect-ratio:9/16;
-  }
-  .page{
-    padding:5px;
-  }
-  button{
-    font-size: 14px;
-    padding: 9px 16px;
   }
 }
- */
+
 /* Using W3 method */
 @media screen and (min-width:200px) and (max-width:400px){
   img(display :none);
