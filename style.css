@@ -1,11 +1,11 @@
 /* Variables for easy customization */
 :root {
-  --flip-duration: 0.8s; /* duration of flip animation */
-  --page-width: 300px;
-  --page-height: 400px;
-  --button-bg-color: #007bff;
-  --button-disabled-bg: #ccc;
-  --button-color: #fff;
+  flip-duration: 0.8s; /* duration of flip animation */
+  page-width: 300px;
+  page-height: 400px;
+  button-bg-color: #007bff;
+  button-disabled-bg: #ccc;
+  button-color: #fff;
 }
 
 /* Basic resets */
