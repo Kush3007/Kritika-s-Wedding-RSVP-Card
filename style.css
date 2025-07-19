@@ -77,3 +77,30 @@ button:disabled {
     font-size: 1em;
   }
 }
+
+/* Using W3 method */
+@media screen and (min-width:200px) and (max-width:400px){
+  img(display :none);
+}
+
+@media screen{
+  p {
+    font-family: verdana,sans-serif;
+    font-size: 12px;
+  }
+}
+
+@media print{
+  p {
+    font-family: garamond,serif;
+    font-size:10px;
+  }
+  img {
+    display:none;
+  }
+}
+
+@media screen and (max-width: 600px){
+}
+    
+    
