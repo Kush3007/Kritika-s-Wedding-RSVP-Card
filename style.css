@@ -1,0 +1,124 @@
+/* Variables for easy customization */
+:root {
+  --flip-duration: 0.8s; /* duration of flip animation */
+  --page-width: 300px;
+  --page-height: 400px;
+  --button-bg-color: #007bff;
+  --button-disabled-bg: #ccc;
+  --button-color: #fff;
+}
+
+/* Basic resets */
+* {
+  box-sizing: border-box;
+}
+
+.flipbook-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 20px;
+  user-select: none;
+}
+
+.flipbook {
+  position: relative;
+  width: calc(var(--page-width) * 2);
+  height: var(--page-height);
+  perspective: 1500px; /* needed for 3D flip */
+  margin-bottom: 15px;
+}
+
+/* Single page styles */
+.page {
+  position: absolute;
+  width: var(--page-width);
+  height: var(--page-height);
+  background: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  border: 1px solid #ddd;
+  overflow: hidden;
+  border-radius: 6px;
+  backface-visibility: hidden; /* hide back side during flip */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  user-select: none;
+}
+
+/* Left page: static */
+.page-left {
+  left: 0;
+  z-index: 1;
+}
+
+/* Right page: flip from right to left */
+.page-right {
+  right: 0;
+  transform-origin: left center;
+  z-index: 2;
+  background: #f0f0f0;
+  cursor: pointer;
+}
+
+/* Flip animation - right page flips to left side */
+.flipbook.flip .page-right {
+  animation: flipPage var(--flip-duration) forwards;
+  /* forwards keeps the final state */
+}
+
+/* Flip animation keyframes: rotateY from 0 to -180 deg */
+@keyframes flipPage {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(-180deg);
+  }
+}
+
+/* Buttons container */
+.buttons {
+  display: flex;
+  gap: 12px;
+}
+
+/* Button styling */
+.btn {
+  background-color: var(--button-bg-color);
+  color: var(--button-color);
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+
+.btn:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.btn:disabled {
+  background-color: var(--button-disabled-bg);
+  cursor: not-allowed;
+  color: #888;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  :root {
+    --page-width: 200px;
+    --page-height: 280px;
+  }
+
+  .btn {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}
