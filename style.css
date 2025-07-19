@@ -73,8 +73,8 @@ button:disabled {
   cursor: not-allowed;
 }
 
-@media (max-width: 600px) {
-  /* Adjust styles for mobile */
+/* @media (max-width: 600px) {
+   Adjust styles for mobile 
   .flipbook {
     width: 100vw;
     padding: 10px;
@@ -89,7 +89,7 @@ button:disabled {
     padding: 9px 16px;
   }
 }
-
+ */
 /* Using W3 method */
 @media screen and (min-width:200px) and (max-width:400px){
   img(display :none);
