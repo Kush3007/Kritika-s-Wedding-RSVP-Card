@@ -2,7 +2,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 720vh;
+  height: 100%;
   background: #fef6e4;
   font-family: 'Georgia', serif;
   margin: 0;
